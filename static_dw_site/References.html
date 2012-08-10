@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Methods</title>
+<style type="text/css">
+-->
+</style><!--[if lte IE 7]>
+<style>
+.content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
+ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
+</style>
+<![endif]-->
+<link href="affectiveSynchrony.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="container">
+  <div class="sidebar1">
+    <ul class="nav">
+      <li><a href="Index.html">HOME</a></li>
+      <li><a href="Introduction.html">INTRODUCTION</a></li>
+      <li><a href="Background.html">BACKGROUND</a></li>
+      <li><a href="DataSet.html">DATA SET</a></li>
+      <li><a href="Methods.html">METHODS</a></li>
+      <li><a href="Investigations.html">INVESTIGATIONS</a></li>
+      <li><a href="Visualizations.html">VISUALIZATIONS</a></li>
+      <li><a href="Discussion.html">DISCUSSION</a></li>
+      <li><a href="FutureWork.html">FUTURE WORK</a></li>
+      <li><a href="References.html">REFERENCES</a></li>
+      <li><a href="Acknowledgements.html">ACKNOWLEDGEMENTS</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h1>METHODS</h1>
+    <p>In this section I outline the various methods I used in order to conduct an analysis of the data, including pre-processing methods, as well as the approaches used during processing. </p>
+    <h2>PREPROCESSING</h2>
+    <p>1. Finding Sessions with Viable Data</p>
+    <p>Due to difficulties with collecting the data, many of the sessions captured in the initial dataset were not viable for our use. During each session, both the child and treatment provider wore sensors on 2 ankles. The following selection criteria were applied after reading in raw EDA data into Matlab to locate viable sessions:</p>
+    <p>SELECTION CRITERIA:</p>
+    <ul>
+      <ul>
+        <li>Measurements must be above .45 us</li>
+        <li>Measurements must be continuous for a significant period of time (5 minutes and above)</li>
+        <li>Measurements for a given subject must be continuous over one sensor, ie, continuous measurement on ankle 1 for the provider and continuous measurement on ankle 2 for the child. If sensor 1 stops having readings for 2 minutes, but sensor 2 has readings for those 2 minutes, the sensor 1 reading for a period containing those 2 minutes is not continuous. </li>
+        <li>Engagement of subjects must be appropriate (depending on whether pool was engaged or not engaged)</li>
+        <li>Measurements must reflect realistic fluctuation (ie, no long periods of flatness)</li>
+      </ul>
+    </ul>
+    <p>To this end, I used blah.m(link!) to highlight regions of interest automatically before combing through the rest of the segments to filter for the rest of the selection criteria. </p>
+    <p>2. Filtering the Signal</p>
+    <p>I applied a band-pass filter to each sample in order to smooth the signal. To determine the appropriate parameters for the band-pass filter applied, I utilized the interactive signal processing scripts iFilter.m, and iSignal.m, written by T. O'Haver of UMD, located <a href="http://terpconnect.umd.edu/~toh/spectrum/SignalProcessingTools.html">here</a>. For specific parameters chosen for each sample, please see Results.</p>
+    <p>3. Peak Detection</p>
+    <p>I applied an automated peak detection algorithm, also written by T. O'Haver, implemented in his script iPeak.m, choosing specific parameters using the script's interactive feature in order to ascertain the best fit. For specific parameters chosen for each sample, please see Results.</p>
+    <h2>ANALYSES</h2>
+    <p>1. Examining the Raw Signal</p>
+    <p>Graphed unfiltered EDA's of provider and child next to one another, as well as stacked on top of one another.</p>
+    <p>2. Examining the Filtered Signal</p>
+    <p>Graphed filtered EDA's of provider and child next to one another, as well as stacked on top of one another.</p>
+    <p>3. Correlations</p>
+    <p>Used script to vary time window of data, and then ran correlation script in matlab in order to find periods of time in which the filtered signals correlated. Script can be found here.</p>
+    <p>4. Average Delays between Peaks</p>
+    <p>Calculated and examined delay between peak in signal A and the nearest subsequent peak in signal B. Calculated and examined average delay over variable time intervals. </p>
+    <p>5. Average Number of Peaks</p>
+    <p>Calculated and examined average number of peaks over variable time intervals. </p>
+    <p>6. Labeled events</p>
+    <p>Examined video footage to determine what events were actually taking place during EDA measurements.    </p>
+    <h2>VISUALIZATIONS</h2>
+    <p>All interactive visualizations were constructed using D3, an experimental data visualization library created by Mike Bostock of the Stanford Visualization Group. D3 can be found here. </p>
+    <h2>SOFTWARE</h2>
+    <p>I primarily used Matlab 2010Ra, Python 2.7, Adobe Dreamweaver CS5, and D3, a javascript based data visualization library to conduct this project. </p>
+<h2>DATA CONVERSION</h2>
+    <p>I recieved the initial dataset in excel format. I used a python script written by Peter Combs (pcombs@gmail.com) to convert my excel files into .mat files, and another matlab script, found here, to convert my matlab data into the JSON files that are read by D3.    <!-- end .content --></p>
+  </div>
+  <div class="footer">
+    <p>Parama Pal | MAS.630 | Fall 2011</p>
+    <!-- end .footer --></div>
+
+  <!-- end .container --></div>
+</body>
+</html>
