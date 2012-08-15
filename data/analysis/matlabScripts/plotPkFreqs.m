@@ -1,0 +1,58 @@
+function plotPkFreqs= plotPkFreqs( cin,oin, win, cnum, csess )
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+
+x = 1:length(cin);
+x = x/120;
+
+
+figure('Units','pixels','Position',[1,1,1500,300])
+colormap('jet');
+% h1 = plot(x,cin);
+% h2 = plot(x,oin);
+subplot(2,1,1) 
+plot(x,cin,'r')
+
+
+hTitle = title(sprintf('Average Peaks over %d second Sliding Window : Child %d, Session %s',win/2,cnum,csess));
+hXLabel = xlabel('Child: Time (min)')
+hYLabel = ylabel('Avg Peaks')
+
+%set(get(h(1),'BaseLine'),'LineWidth',2,'LineStyle',':')
+set( gca                       , ...
+        'FontName'   , 'Arial' );
+    set([hTitle, hYLabel], ...
+        'FontName'   , 'AvantGarde');
+    set([hYLabel]  , ...
+        'FontSize'   , 10          );
+    set( hTitle                    , ...
+        'FontSize'   , 12          , ...
+        'FontWeight' , 'bold'      );
+    
+    set(gca, ...
+        'Box'         , 'on'     , ...
+        'TickDir'     , 'in'     , ...
+        'TickLength'  , [.005 .005] , ...
+        'YGrid'       , 'on'      , ...
+        'XColor'      , [.1 .1 .1], ...
+        'YColor'      , [.1 .1 .1], ...
+        'LineWidth'   , 1         );
+
+    
+    set(gcf, 'PaperPositionMode', 'auto');
+    
+hold on
+
+subplot(2,1,2)
+plot(x,oin,'b')
+hXLabel = xlabel('OT: Time (min)')
+hYLabel = ylabel('Avg Peaks')
+
+     print(gcf, '-djpeg', sprintf('c%ds%sPkFreq.jpg',cnum,csess))
+     print(gcf, '-djpeg', sprintf('/Users/parama 1/Sites/affectiveSynchrony/images/c%ds%sPkFreq.jpg',cnum,csess));
+
+
+
+
+end
+

@@ -1,0 +1,96 @@
+function plotRegs= plotRegs(subjectNumber)
+%UNTITLED3 Summary of this function goes here
+%   Detailed explanation goes here
+lookup = 'ABCDFGHIJKLMNOPQRSTUVX';
+subID = subjectNumber-1
+%load subject's file
+load(sprintf('%s0.xls.mat',lookup(subjectNumber)));
+
+cf1 = eval(sprintf('Child_EDA_Foot_1_%d',subID));
+cf2 = eval(sprintf('Child_EDA_Foot_2_%d',subID));
+of1 = eval(sprintf('OT_EDA_Foot_1_%d',subID));
+of2 = eval(sprintf('OT_EDA_Foot_2_%d',subID));
+ses = eval(sprintf('Session_%d',subID));
+
+
+
+[s,int] = checkSubs(subjectNumber,subjectNumber);
+mat = int{subjectNumber};
+
+for i=1:size(mat,1)
+    hold off
+    figure('Units','pixels','Position',[1,1,1000,200])
+    
+    seslen = mat(i,2)-mat(i,1);
+    seslen*100/100;
+    seslenmin = seslen/120;
+    sesstarttime = mat(i,1)/120;
+    x=0:1:seslen;
+    x=x/120;
+
+    
+    sizer = length(x)
+    eval(sprintf('length(cf%d(%d:%d))',mat(i,3),mat(i,1),mat(i,2)));
+    eval(sprintf('p = plot(x,cf%d(%d:%d))',mat(i,3),mat(i,1),mat(i,2)));
+    set(p,'Color','red','LineWidth',1);
+    hold on
+    eval(sprintf('q = plot(x,of%d(%d:%d))',mat(i,4),mat(i,1),mat(i,2)));
+    set(q,'Color','blue','LineWidth',1);
+    hTitle = title(sprintf('Child: %d Session: %d Time to Begin:%0.2f Total Duration:%.2f min',subjectNumber, ses(mat(i,1))+1,sesstarttime, seslenmin));
+    hXLabel = xlabel('Time (min)');
+    hYLabel = ylabel('uS');
+    legend('Child','Occupational Therapist');
+    
+    set( gca                       , ...
+        'FontName'   , 'Arial' );
+    set([hTitle, hYLabel], ...
+        'FontName'   , 'AvantGarde');
+    set([hYLabel]  , ...
+        'FontSize'   , 10          );
+    set( hTitle                    , ...
+        'FontSize'   , 12          , ...
+        'FontWeight' , 'bold'      );
+
+    
+    set(gcf, 'PaperPositionMode', 'auto');
+    print(gcf, '-djpeg', sprintf('c%ds%dTS%dDur%df.jpg',subjectNumber, ses(mat(i,1)),round(sesstarttime), round(seslenmin)));
+    print(gcf, '-djpeg', sprintf('/Users/parama 1/Sites/affectiveSynchrony/images/c%ds%dTS%dDur%d.jpg',subjectNumber, ses(mat(i,1)),round(sesstarttime), round(seslenmin)));
+
+
+    
+    hold off
+    %figure(2*(i-1)+2)
+    figure('Units','pixels','Position',[1,1,1000,200])
+    eval(sprintf('r = plot(x,(cf%d(%d:%d))/(max(cf%d)-min(cf%d)))',mat(i,3),mat(i,1),mat(i,2),mat(i,3),mat(i,3)));
+    set(r,'Color','red','LineWidth',1);
+    hold on
+    eval(sprintf('s = plot(x,(of%d(%d:%d))/(max(of%d)-min(of%d)))',mat(i,4),mat(i,1),mat(i,2),mat(i,3),mat(i,3)));
+    set(s,'Color','blue','LineWidth',1);
+    hTitle = title(sprintf('Child: %d Session: %d Time to Begin:%0.2f Total Duration:%.2f min',subjectNumber, ses(mat(i,1)),sesstarttime, seslenmin));
+    hXLabel = xlabel('Time (min)');
+    legend('Child','Occupational Therapist');
+    
+    set( gca                       , ...
+        'FontName'   , 'Arial' );
+    set([hTitle, hYLabel], ...
+        'FontName'   , 'AvantGarde');
+    set([hYLabel]  , ...
+        'FontSize'   , 10          );
+    set( hTitle                    , ...
+        'FontSize'   , 12          , ...
+        'FontWeight' , 'bold'      );
+    
+    set(gcf, 'PaperPositionMode', 'auto');
+    print(gcf, '-djpeg', sprintf('c%ds%dTS%iDur%inorm.jpg',subjectNumber, ses(mat(i,1)),round(sesstarttime), round(seslenmin)));
+    print(gcf, '-djpeg', sprintf('/Users/parama 1/Sites/affectiveSynchrony/images/c%ds%dTS%iDur%inorm.jpg',subjectNumber, ses(mat(i,1)),round(sesstarttime), round(seslenmin)));
+
+
+    
+%   subtract off baseline activity and then normalize  
+
+
+
+    
+end
+end
+

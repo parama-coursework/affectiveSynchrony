@@ -1,0 +1,11 @@
+function [h]= jsonWrite(fileName, var,varname)
+%UNTITLED3 Summary of this function goes here
+
+fid = fopen(sprintf('%s.json',fileName), 'w');
+v = sprintf('varname 
+fprintf(fid, var);
+fclose(fid);
+
+h=0;
+end
+
