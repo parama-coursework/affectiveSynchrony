@@ -40,6 +40,7 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 <![endif]-->
 
 
+
 </head>
 
 <body>
@@ -81,7 +82,7 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
           </div><!--/.well -->
         </div><!--/sidebar span-->
 
-        <div class="span8">
+        <div class="span10">
 		<div class="content">
 			<div class="row-fluid">
 			<div class="navbar">
@@ -101,61 +102,7 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 			<div class="row-fluid">
 			<div class="plotBox">
 			
-				<form id="side_panel">
-					<h1>Random Data in the Future</h1>
-					<section><div id="legend"></div></section>
-					<section>
-						<div id="renderer_form" class="toggler">
-							<input type="radio" name="renderer" id="area" value="area" checked>
-							<label for="area">area</label>
-							<input type="radio" name="renderer" id="bar" value="bar">
-							<label for="bar">bar</label>
-							<input type="radio" name="renderer" id="line" value="line">
-							<label for="line">line</label>
-							<input type="radio" name="renderer" id="scatter" value="scatterplot">
-							<label for="scatter">scatter</label>
-						</div>
-					</section>
-					<section>
-						<div id="offset_form">
-							<label for="stack">
-								<input type="radio" name="offset" id="stack" value="zero" checked>
-								<span>stack</span>
-							</label>
-							<label for="stream">
-								<input type="radio" name="offset" id="stream" value="wiggle">
-								<span>stream</span>
-							</label>
-							<label for="pct">
-								<input type="radio" name="offset" id="pct" value="expand">
-								<span>pct</span>
-							</label>
-							<label for="value">
-								<input type="radio" name="offset" id="value" value="value">
-								<span>value</span>
-							</label>
-						</div>
-						<div id="interpolation_form">
-							<label for="cardinal">
-								<input type="radio" name="interpolation" id="cardinal" value="cardinal" checked>
-								<span>cardinal</span>
-							</label>
-							<label for="linear">
-								<input type="radio" name="interpolation" id="linear" value="linear">
-								<span>linear</span>
-							</label>
-							<label for="step">
-								<input type="radio" name="interpolation" id="step" value="step-after">
-								<span>step</span>
-							</label>
-						</div>
-					</section>
-					<section>
-						<h6>Smoothing</h6>
-						<div id="smoother"></div>
-					</section>
-					<section></section>
-				</form>
+
 
 				<div id="chart_container">
 					<div id="chart"></div>
@@ -163,17 +110,19 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 					<div id="slider"></div>
 				</div>
 
-			</div>
 			<script>
 
 			// set up our data series with 50 random data points
 
 			var seriesData = [ [], [], [], [], [], [], [], [], [] ];
-			var random = new Rickshaw.Fixtures.RandomData(150);
+			var random = new Rickshaw.Fixtures.RandomData(1524);
 
-			for (var i = 0; i < 150; i++) {
+			for (var i = 0; i < 1524; i++) {
 				random.addData(seriesData);
 			}
+			
+			seriesData[0]=convertArrayCoordsWithTime(cf4s1.ceda);
+			seriesData[6]=convertArrayCoordsWithTime(cf4s1.oeda);
 
 			var palette = new Rickshaw.Color.Palette( { scheme: 'spectrum14' } );
 
@@ -189,7 +138,7 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 					{
 						color: palette.color(),
 						data: seriesData[0],
-						name: 'Moscow'
+						name: 'Child'
 					}, /*{
 						color: palette.color(),
 						data: seriesData[1],
@@ -213,7 +162,7 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 					}, */{
 						color: palette.color(),
 						data: seriesData[6],
-						name: 'New York'
+						name: 'Occupational Therapist'
 					}
 				]
 			} );
@@ -302,13 +251,14 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 
 			}, 3000 );*/
 
-			function addAnnotation(force) {
+			/*function addAnnotation(force) {
 				if (messages.length > 0 && (force || Math.random() >= 0.95)) {
 					annotator.add(seriesData[2][seriesData[2].length-1].x, messages.shift());
 				}
 			}
 
-			addAnnotation(true);
+			addAnnotation(true);*/
+			
 			//setTimeout( function() { setInterval( addAnnotation, 6000 ) }, 6000 );
 
 			</script>
@@ -316,14 +266,71 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 			</div>
 			</div>
 			
-			
+			<form id="side_panel">
+				<h1>Raw Eda Charts</h1>
+				<section><div id="legend"></div></section>
+				<section>
+					<div id="renderer_form" class="toggler">
+						<input type="radio" name="renderer" id="area" value="area" checked>
+						<label for="area">area</label>
+						<input type="radio" name="renderer" id="bar" value="bar">
+						<label for="bar">bar</label>
+						<input type="radio" name="renderer" id="line" value="line">
+						<label for="line">line</label>
+						<input type="radio" name="renderer" id="scatter" value="scatterplot">
+						<label for="scatter">scatter</label>
+					</div>
+				</section>
+				<section>
+					<div id="offset_form">
+						<label for="stack">
+							<input type="radio" name="offset" id="stack" value="zero" checked>
+							<span>stack</span>
+						</label>
+						<label for="stream">
+							<input type="radio" name="offset" id="stream" value="wiggle">
+							<span>stream</span>
+						</label>
+						<label for="pct">
+							<input type="radio" name="offset" id="pct" value="expand">
+							<span>pct</span>
+						</label>
+						<label for="value">
+							<input type="radio" name="offset" id="value" value="value">
+							<span>value</span>
+						</label>
+					</div>
+					<div id="interpolation_form">
+						<label for="cardinal">
+							<input type="radio" name="interpolation" id="cardinal" value="cardinal" checked>
+							<span>cardinal</span>
+						</label>
+						<label for="linear">
+							<input type="radio" name="interpolation" id="linear" value="linear">
+							<span>linear</span>
+						</label>
+						<label for="step">
+							<input type="radio" name="interpolation" id="step" value="step-after">
+							<span>step</span>
+						</label>
+					</div>
+				</section>
+				<section>
+					<h6>Smoothing</h6>
+					<div id="smoother"></div>
+				</section>
+				<section></section>
+			</form>
+			</div>
 
 			
 		</div><!--end content box-->
 		</div>
 		
-		<div class="span2">
-		</div>
+		<!--<div class="span2">
+		
+
+		</div>-->
 
 	<!-- end .container -->
 	</div><!-- end row-fluid -->

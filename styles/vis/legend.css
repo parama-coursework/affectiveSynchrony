@@ -1,10 +1,10 @@
 .rickshaw_legend {
 	font-family: Arial;
-	font-size: 12px;
+	font-size: 10px;
 	color: white;
-	background: #404040;
+	background: #eee;
 	display: inline-block;
-	padding: 12px 5px; 
+	padding: 15px 5px; 
 	border-radius: 2px;
 	position: relative;
 }
@@ -29,16 +29,17 @@
 .rickshaw_legend .label {
 	white-space: nowrap;
 	display: inline;
+	font-size: 10px;
 }
 .rickshaw_legend .action:hover {
-	opacity: 0.6;
+	opacity: 0.4;
 }
 .rickshaw_legend .action {
 	margin-right: 0.2em;
 	font-size: 10px;
 	opacity: 0.2;
 	cursor: pointer;
-	font-size: 14px;
+	font-size: 12px;
 }
 .rickshaw_legend .line.disabled {
 	opacity: 0.4;
