@@ -1,0 +1,1 @@
+conversion: one timepoint every half a second
