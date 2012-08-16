@@ -2,48 +2,92 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!--Load Libraries-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<!--Load Styles-->
+<link rel="stylesheet" href="../styles/themes/spacelab/bootstrap.min.css">
+<link rel="stylesheet/less" href="../styles/themes/spacelab/bootswatch.less">
+<link rel="stylesheet/less" href="../styles/themes/spacelab/variables.less">
+<link rel="stylesheet/less" href="../styles/less-1.3.0.min.less">
+<link rel="stylesheet" href="../styles/contentpage.css">
+
 <title>Data Set</title>
-<style type="text/css">
--->
-</style><!--[if lte IE 7]>
+
+<!--[if lte IE 7]>
 <style>
 .content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
 ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
 </style>
 <![endif]-->
-<link href="affectiveSynchrony.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
 
-<div class="container">
-  <div class="sidebar1">
-    <ul class="nav">
-      <li><a href="Index.html">HOME</a></li>
-      <li><a href="Introduction.html">INTRODUCTION</a></li>
-      <li><a href="Background.html">BACKGROUND</a></li>
-      <li><a href="DataSet.html">DATA SET</a></li>
-      <li><a href="Methods.html">METHODS</a></li>
-      <li><a href="Investigations.html">INVESTIGATIONS</a></li>
-      <li><a href="Visualizations.html">VISUALIZATIONS</a></li>
-      <li><a href="Discussion.html">DISCUSSION</a></li>
-      <li><a href="FutureWork.html">FUTURE WORK</a></li>
-      <li><a href="References.html">REFERENCES</a></li>
-      <li><a href="Acknowledgements.html">ACKNOWLEDGEMENTS</a></li>
-    </ul>
-  </div>
-  <div class="content">
-    <h1>DATA SET</h1>
-    <p>1. Original Data Set</p>
-    <p>The original data set was the same one used by E Hedman in his work, &quot;In-Situ Measurement of Electrodermal Activity during Occupational Therapy.&quot; For a more detailed summary of this data set, please see section 7.1, &quot;Subjects&quot; in this document. </p>
-    <p>This data set contained EDA measurements from 22 children enrolled in occupational therapy at the STAR (Sensory Therapies And Research) Center in Greenwood Village, Colorado working with 8 occupational therapists for a total of 77 recorded sessions. All of the children had a diagnosis of Sensory Processing Disorder (SPD). Measurements were taken via wireless iCalm sensors that were attached to ankle bands that the subjects wore during the session.    </p>
-    <p>2. Final Data Set</p>
-    <p>Applying the selection criteria outlined in &quot;Methods,&quot; after filtering out for continuity and basic levels, we had 12 short intervals selected from the recorded sessions, each of at least five minutes in length. Of these intervals, upon doing final pass, we chose to focus on 4 specific sessions in which the child was engaged with the OT for most of the time period in which we were asessing their EDA's. </p>
-  </div>
-  <div class="footer">
-    <p>Parama Pal | MAS.630 | Fall 2011</p>
-    <!-- end .footer --></div>
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand">AFFECTIVE SYNCHRONY</a>
+            <ul class="nav">
+				<li><a href="http://github.com/parama">Parama Pal</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-  <!-- end .container --></div>
+
+<div class="container-fluid">
+      <div class="row-fluid">
+        
+		<div class="span2">          
+		<div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <!--<li class="nav-header">Sidebar</li>-->
+              <li><a href="Index.html">ABSTRACT</a></li>
+			  <li><a href="Introduction.html">INTRODUCTION</a></li>
+		      <li><a href="Background.html">BACKGROUND</a></li>
+		      <li class="active"><a href="DataSet.html">DATA</a></li>
+		      <li><a href="Methods.html">METHODS</a></li>
+		      <li><a href="Investigations.html">INVESTIGATIONS</a></li>
+		      <li><a href="Visualizations.html">VISUALIZATIONS</a></li>
+		      <li><a href="Discussion.html">DISCUSSION</a></li>
+		      <li><a href="FutureWork.html">FUTURE WORK</a></li>
+		      <li><a href="References.html">REFERENCES</a></li>
+		      <li><a href="Acknowledgements.html">ACKNOWLEDGEMENTS</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/sidebar span-->
+
+        <div class="span10">
+		<div class="content">
+			
+			<div class="span1"></div>
+			
+			<div class="span8">
+			
+				<h1>DATA SET</h1>
+			    <p>1. Original Data Set</p>
+			    <p>The original data set was the same one used by E Hedman in his work, &quot;In-Situ Measurement of Electrodermal Activity during Occupational Therapy.&quot; For a more detailed summary of this data set, please see section 7.1, &quot;Subjects&quot; in this document. </p>
+			    <p>This data set contained EDA measurements from 22 children enrolled in occupational therapy at the STAR (Sensory Therapies And Research) Center in Greenwood Village, Colorado working with 8 occupational therapists for a total of 77 recorded sessions. All of the children had a diagnosis of Sensory Processing Disorder (SPD). Measurements were taken via wireless iCalm sensors that were attached to ankle bands that the subjects wore during the session.    </p>
+			    <p>2. Final Data Set</p>
+			    <p>Applying the selection criteria outlined in &quot;Methods,&quot; after filtering out for continuity and basic levels, we had 12 short intervals selected from the recorded sessions, each of at least five minutes in length. Of these intervals, upon doing final pass, we chose to focus on 4 specific sessions in which the child was engaged with the OT for most of the time period in which we were asessing their EDA's. </p>
+			
+			</div>
+			
+		</div><!--end content box-->
+		</div>
+		
+		<div class="span1"></div>
+
+	<!-- end .container -->
+	</div><!-- end row-fluid -->
+	
+	<div class="footer" style="text-align:center">
+		<p>Parama Pal | MAS.630 | Fall 2011</p>
+	</div>
+	
+	</div>
 </body>
 </html>
