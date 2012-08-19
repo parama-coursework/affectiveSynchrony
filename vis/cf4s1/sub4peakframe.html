@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!--Load Libraries-->
+<script type="text/javascript" src="../libs/jquery.1.7.2.min.js"></script>
+<script src="../libs/jquery-ui.1.8.15.min.js"></script>
+<script type="text/javascript" src="../libs/d3.v2.min.js"></script>
+<script type="text/javascript" src="../libs/rickshaw.min.js"></script>
+<script type="text/javascript" src="../libs/extensions.js"></script>
+
+<!--Load Scripts-->
+<script type="text/javascript" src="../parseData.js"></script>
+<script type="text/javascript" src="../libs/jquery.easing.js"></script>
+<script type="text/javascript" src="../libs/jquery.collapse.js"></script>
+<script type="text/javascript">
+	
+	$(function(){
+		
+		$('#collapser').jqcollapse({
+		   slide: true,
+		   speed: 1000,
+		   easing: 'easeOutCubic'
+		});
+		
+	});
+	
+</script>
+
+<!--Load Data-->
+<script type="text/javascript" src="../../data/analysis/json/cf4s1.js"></script>
+
+
+<!--Load Styles-->
+<link rel="stylesheet" href="../../styles/themes/spacelab/bootstrap.min.css"/>
+<link rel="stylesheet/less" href="../../styles/themes/spacelab/bootswatch.less"/>
+<link rel="stylesheet/less" href="../../styles/themes/spacelab/variables.less"/>
+<link rel="stylesheet/less" href="../../styles/less-1.3.0.min.less"/>
+<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"/>
+<link rel="stylesheet" href="../../styles/contentpage.css"/>
+<link rel="stylesheet" href="../libs/rickshaw.min.css"/>
+<link type="text/css" rel="stylesheet" href="../../styles/vis/graph.css"/>
+<link type="text/css" rel="stylesheet" href="../../styles/vis/detail.css"/>
+<link type="text/css" rel="stylesheet" href="../../styles/vis/legend.css"/>
+<link type="text/css" rel="stylesheet" href="../../styles/vis/extensions.css"/>
+
+<link type="text/css" rel="stylesheet" href="../../styles/vis/extra.css"/>
+</head>
+
+<body>
+<div class="row-fluid">
+
+<!--Instructional span 2 column-->
+<div class="span2">
+	<div class="well">
+	<p> The following plots allow you, the user, to explore the data set. Click to expand option descriptions.</p>
+	<ul id="collapser"> 
+		<li><b>Select Series</b>
+			<ul style="list-style-type:none;padding:0;margin:0;">
+				<li>Check time series to view them on the chart. Axes will update for the remaining series.</li>
+			</ul>
+		</li>
+		<li><b> Reorder Series</b>
+			<ul>
+				<li>Drag and drop the time series to reorder them</li>
+			</ul>
+		</li>
+		<li><b>Highlight Series</b>
+			<ul>
+				<li>Hovering over the name of a specific time series will highlight it while greying out other time series.</li>
+			</ul>
+		</li>
+		<li><b>Select Chart Type</b>
+			<ul>
+				<li>Controls and toggles allow you to control which data you are looking at, and allow for stacked charts, line charts, bar chart, and scatter plot views of the data.</li>
+			</ul>
+		</li>
+		<li><b>Interpolation</b>
+			<ul>
+				<li>The view also allows you to switch between different types of interpolation between time points, options being cardinal, linear, and stepped interpolation.</li>
+			</ul>
+		</li>
+		<li><b>Annotations</b>
+			<ul>
+				<li>Hover over the grey dots that lie between the chart and the slider bar to see annotations</li>
+			</ul>
+		</li>
+		<li><b>Zoom</b>
+			<ul>
+				<li>Use the sliders to zoom in to a time series, and mouse over grey dots along the bottom of the time series for annotations.</li>
+			</ul>
+		</li>
+	</ul>
+	</div><!--/well-->	
+</div><!--/span2-->	
+
+
+<!---Raw EDA Charts-->
+
+	<!---Time Series-->
+	<div class="span8">
+		<div id="chart_container">
+			
+			<h4>PEAK FREQUENCY VALUES</h4>
+			<div id="chart"></div>
+			<div id="timeline"></div>
+			<div id="slider"></div>
+			<div id="chartNotes">
+			<p> In this specific case, we see that the general value readings for the child were much higher when we examine EDAs on the streamgraph. </p>
+			</div>
+		</div>
+	</div>
+
+	<!---Control Panel-->
+	<div class="span2">
+	
+		<form id="side_panel">
+			<h4>SETTINGS</h4>
+			<section><div id="legend"></div></section>
+			<section>
+				<div id="renderer_form" class="toggler">
+					<input type="radio" name="renderer" id="area" value="area" checked>
+					<label for="area">area</label>
+					<input type="radio" name="renderer" id="bar" value="bar">
+					<label for="bar">bar</label>
+					<input type="radio" name="renderer" id="line" value="line">
+					<label for="line">line</label>
+					<input type="radio" name="renderer" id="scatter" value="scatterplot">
+					<label for="scatter">scatter</label>
+				</div>
+			</section>
+			<section>
+				<div id="offset_form">
+					<label for="stack">
+						<input type="radio" name="offset" id="stack" value="zero" checked>
+						<span>stack</span>
+					</label>
+					<label for="stream">
+						<input type="radio" name="offset" id="stream" value="wiggle">
+						<span>stream</span>
+					</label>
+					<label for="pct">
+						<input type="radio" name="offset" id="pct" value="expand">
+						<span>percent</span>
+					</label>
+					<label for="value">
+						<input type="radio" name="offset" id="value" value="value">
+						<span>value</span>
+					</label>
+				</div>
+				<div id="interpolation_form">
+					<label for="cardinal">
+						<input type="radio" name="interpolation" id="cardinal" value="cardinal" checked>
+						<span>cardinal</span>
+					</label>
+					<label for="linear">
+						<input type="radio" name="interpolation" id="linear" value="linear">
+						<span>linear</span>
+					</label>
+					<label for="step">
+						<input type="radio" name="interpolation" id="step" value="step-after">
+						<span>step</span>
+					</label>
+				</div>
+			</section>
+			<!--<section>
+				<h6>Smoothing</h6>
+				<div id="smoother"></div>
+			</section>-->
+			<section></section>
+		</form>
+	
+	</div><!--/control panel 1 span 2-->	
+
+</div><!-- end row-fluid -->
+
+<script>
+/////////////////////////// JAVASCRIPT STARTS HERE ///////////////////////////
+		//first raw eda plot
+		
+		
+				var seriesData = [ [], [], [], [], [], [], [], [], [] ];
+				var random = new Rickshaw.Fixtures.RandomData(1252);
+
+				for (var i = 0; i < 1252; i++) {
+					random.addData(seriesData);
+				}
+
+				
+				seriesData[0]=convertArrayCoordsWithTime(cf4s1.cpf);
+				seriesData[1]=convertArrayCoordsWithTime(cf4s1.opf);
+
+				var palette = new Rickshaw.Color.Palette( { scheme: 'spectrum14' } );
+				//var palette = d3.scale.category10();
+
+				// instantiate our graph!
+				widthB = $("div.span8"); //figure out what div to access to get desired width
+				paddingBox = 10;
+				widthBox = $(widthB).width()-paddingBox;
+
+				var graph = new Rickshaw.Graph( {
+					element: document.getElementById("chart"),
+					width: widthBox,
+					height: 150,
+					renderer: 'area',
+					stroke: true,
+					series: [
+						 {
+							color: palette.color(),
+							data: seriesData[1],
+							name: 'OT Peak Frequency'
+						}, {
+							color: palette.color(),
+							data: seriesData[0],
+							name: 'Child Peak Frequency'
+						}
+					]
+				} );
+
+				graph.render();
+
+				var slider = new Rickshaw.Graph.RangeSlider( {
+					graph: graph,
+					element: $('#slider')
+				} );
+
+				var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+					graph: graph
+				} );
+
+				var annotator = new Rickshaw.Graph.Annotate( {
+					graph: graph,
+					element: document.getElementById('timeline')
+				} );
+
+				var legend = new Rickshaw.Graph.Legend( {
+					graph: graph,
+					element: document.getElementById('legend')
+
+				} );
+
+				var shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
+					graph: graph,
+					legend: legend
+				} );
+
+				var order = new Rickshaw.Graph.Behavior.Series.Order( {
+					graph: graph,
+					legend: legend
+				} );
+
+				var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
+					graph: graph,
+					legend: legend
+				} );
+
+				//var smoother = new Rickshaw.Graph.Smoother( {
+				//	graph: graph,
+				//	element: $('#smoother')
+				//} );
+
+				var ticksTreatment = 'glow';
+
+				var xAxis = new Rickshaw.Graph.Axis.Time( {
+					graph: graph,
+					ticksTreatment: ticksTreatment
+				} );
+
+				xAxis.render();
+
+				var yAxis = new Rickshaw.Graph.Axis.Y( {
+					graph: graph,
+					tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+					ticksTreatment: ticksTreatment
+				} );
+
+				yAxis.render();
+
+
+				var controls = new RenderControls( {
+					element: document.querySelector('form'),
+					graph: graph
+				} );
+
+				// add some data every so often
+
+				var messages = [
+					"Changed home page welcome message",
+					"Minified JS and CSS",
+					"Changed button color from blue to green",
+					"Refactored SQL query to use indexed columns",
+					"Added additional logging for debugging",
+					"Fixed typo",
+					"Rewrite conditional logic for clarity",
+					"Added documentation for new methods"
+				];
+
+				//  setInterval( function() {
+				//	  random.addData(seriesData);
+				//	  graph.update();
+
+				//}, 3000 );
+
+				function addAnnotation(force) {
+					if (messages.length > 0 && (force || Math.random() >= 0.95)) {
+						annotator.add(seriesData[2][seriesData[2].length-1].x, messages.shift());
+					}
+				}
+
+				addAnnotation(true);
+
+				//setTimeout( function() { setInterval( addAnnotation, 6000 ) }, 6000 );
+
+
+
+
+				</script>
+
+
+
+
+			</body>
+		</html>

@@ -159,7 +159,7 @@ label[for=scatter] {
 }
 #offset_form label span,
 #interpolation_form label span {
-	padding-left: 40px;
+	padding-left: 36px;
 }
 label[for=stack] {
 	background-image: url(../images/offset_stack.png);
