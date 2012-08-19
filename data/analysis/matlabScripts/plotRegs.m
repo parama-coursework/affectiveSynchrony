@@ -119,7 +119,7 @@ for i=1:size(mat,1)
     
     set(gcf, 'PaperPositionMode', 'auto');
     print(gcf, '-djpeg', sprintf('c%ds%dTS%iDur%inorm.jpg',subjectNumber, ses(mat(i,1)),round(sesstarttime), round(seslenmin)));
-    print(gcf, '-djpeg', sprintf('/Users/parama 1/Sites/affectiveSynchrony/images/c%ds%dTS%iDur%inorm.jpg',subjectNumber, ses(mat(i,1)),round(sesActStartTime), round(seslenmin)));
+    print(gcf, '-djpeg', sprintf('/Users/parama/github/classes/affectiveSynchrony/data/analysis/images/c%ds%dTS%iDur%inorm.jpg',subjectNumber, ses(mat(i,1)),round(sesActStartTime), round(seslenmin)));
     
     hold off
 
