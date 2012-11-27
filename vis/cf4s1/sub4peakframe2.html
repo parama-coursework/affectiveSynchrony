@@ -63,12 +63,12 @@
 	<div class="span8">
 		<div id="chart_container">
 			
-			<h4>CORRELATION VALUES</h4>
+			<h4>BULLYING RESPONSE FREQUENCY</h4>
 			<div id="chart"></div>
 			<div id="timeline"></div>
 			<div id="slider"></div>
 			<div id="chartNotes">
-			<p> In this specific case, we see that the general value readings for the child were much higher when we examine EDAs on the streamgraph. </p>
+			<p> In this specific case, ... </p>
 			</div>
 		</div>
 	</div>
@@ -142,15 +142,15 @@
 		
 		
 				var seriesData = [ [], [], [], [], [], [], [], [], [] ];
-				var random = new Rickshaw.Fixtures.RandomData(1524);
+				var random = new Rickshaw.Fixtures.RandomData(1252);
 
-				for (var i = 0; i < 1524; i++) {
+				for (var i = 0; i < 1252; i++) {
 					random.addData(seriesData);
 				}
 
 				
-				seriesData[0]=convertArrayCoordsWithTime(cf4s1.cwc);
-				seriesData[1]=convertArrayCoordsWithTime(cf4s1.coc);
+				seriesData[0]=convertArrayCoordsWithTime(cf4s1.cpf);
+				seriesData[1]=convertArrayCoordsWithTime(cf4s1.opf);
 
 				var palette = new Rickshaw.Color.Palette( { scheme: 'spectrum14' } );
 				//var palette = d3.scale.category10();
@@ -163,18 +163,18 @@
 				var graph = new Rickshaw.Graph( {
 					element: document.getElementById("chart"),
 					width: widthBox,
-					//height: 500,
+					height: 150,
 					renderer: 'area',
 					stroke: true,
 					series: [
 						 {
-							color: palette.color(),
+							color: palette.color(5),
 							data: seriesData[1],
-							name: 'Cumulative Correlation'
+							name: 'bullying'
 						}, {
-							color: palette.color(),
+							color: palette.color(7),
 							data: seriesData[0],
-							name: 'Moving Window Correlation'
+							name: 'encouragement'
 						}
 					]
 				} );

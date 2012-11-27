@@ -34,6 +34,6 @@ set( gca                       , ...
 
     
     set(gcf, 'PaperPositionMode', 'auto');
-    print(gcf, '-djpeg', sprintf('c%ds%sdelay.jpg',childNum,SessionNum))
-    print(gcf, '-djpeg', sprintf('/Users/parama 1/Sites/affectiveSynchrony/images/c%ds%sdelay.jpg',childNum,SessionNum));
+    %print(gcf, '-djpeg', sprintf('c%ds%sdelay.jpg',childNum,SessionNum))
+    %print(gcf, '-djpeg', sprintf('/Users/parama/Sites/affectiveSynchrony/images/c%ds%sdelay.jpg',childNum,SessionNum));
 end

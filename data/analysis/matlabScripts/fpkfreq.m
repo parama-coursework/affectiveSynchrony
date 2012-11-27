@@ -1,5 +1,7 @@
 function [ out ] = fpkfreq(table,len,window)
-%UNTITLED Summary of this function goes here
+%Function outputs an array of prespecified length that outputs how many
+%peaks there are over the last n timepoints where n is a pre-specified
+%window. 
 %   Detailed explanation goes here
 
 tally = 0;

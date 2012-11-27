@@ -53,46 +53,7 @@
 
 <!--Instructional span 2 column-->
 <div class="span2">
-	<div class="well">
-	<p> The following plots allow you, the user, to explore the data set. Click to expand option descriptions.</p>
-	<ul id="collapser"> 
-		<li><b>Select Series</b>
-			<ul style="list-style-type:none;padding:0;margin:0;">
-				<li>Check time series to view them on the chart. Axes will update for the remaining series.</li>
-			</ul>
-		</li>
-		<li><b> Reorder Series</b>
-			<ul>
-				<li>Drag and drop the time series to reorder them</li>
-			</ul>
-		</li>
-		<li><b>Highlight Series</b>
-			<ul>
-				<li>Hovering over the name of a specific time series will highlight it while greying out other time series.</li>
-			</ul>
-		</li>
-		<li><b>Select Chart Type</b>
-			<ul>
-				<li>Controls and toggles allow you to control which data you are looking at, and allow for stacked charts, line charts, bar chart, and scatter plot views of the data.</li>
-			</ul>
-		</li>
-		<li><b>Interpolation</b>
-			<ul>
-				<li>The view also allows you to switch between different types of interpolation between time points, options being cardinal, linear, and stepped interpolation.</li>
-			</ul>
-		</li>
-		<li><b>Annotations</b>
-			<ul>
-				<li>Hover over the grey dots that lie between the chart and the slider bar to see annotations</li>
-			</ul>
-		</li>
-		<li><b>Zoom</b>
-			<ul>
-				<li>Use the sliders to zoom in to a time series, and mouse over grey dots along the bottom of the time series for annotations.</li>
-			</ul>
-		</li>
-	</ul>
-	</div><!--/well-->	
+
 </div><!--/span2-->	
 
 
@@ -207,11 +168,11 @@
 					stroke: true,
 					series: [
 						 {
-							color: palette.color(),
+							color: palette.color(5),
 							data: seriesData[1],
 							name: 'OT Peak Frequency'
 						}, {
-							color: palette.color(),
+							color: palette.color(7),
 							data: seriesData[0],
 							name: 'Child Peak Frequency'
 						}
