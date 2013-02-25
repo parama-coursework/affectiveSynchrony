@@ -1403,6 +1403,7 @@ SmoothY=s./w;
     end
     SmoothY(L)=(Y(L)+Y(L-1))./2;
   end
+  
 % ----------------------------------------------------------------------
 function [FitResults,LowestError,BestStart,xi,yi]=peakfit(signal,center,window,NumPeaks,peakshape,extra,NumTrials,start,AUTOZERO)
 % Version 2: Aug, 2011. For details, see

@@ -2,6 +2,10 @@ h1, h2, h3 {
 	text-align: center;
 }
 
+h4 {
+	color:#636363;
+}
+
 img {
 	display: block;
 	margin-left: auto;
@@ -9,4 +13,9 @@ img {
 }
 
 body {
+}
+
+
+.restricted{
+	width:100%; overflow-x: hidden; overflow-y:hidden;
 }

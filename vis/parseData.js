@@ -5,11 +5,14 @@
 
 var timeConstant = 1/120;
 
+//original_date is the date in milliseconds since july 1970 that the data sample was taken (epoch time)
+
 function convertArrayCoordsWithTime(a){
 	
 	var dataArray = [];
 	var newX=0;
 	var newY=0;
+	var dateX = 0;
 	var newPoint=0;
 	var nume = 0;
 	var denom = 2; //current time constant - half a second
@@ -17,8 +20,9 @@ function convertArrayCoordsWithTime(a){
 	{
 		nume = i;
 		newX= nume/denom;
-		
-		newPoint = { x:newX, y:a[i] };
+		//convert newX to milliseconds
+		dateX = newX//*1000 //+ original_date
+		newPoint = { x:dateX, y:a[i] };
 		dataArray.push(newPoint);
 	}
 	

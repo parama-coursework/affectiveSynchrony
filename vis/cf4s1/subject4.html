@@ -1,104 +1,136 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--Load Libraries-->
+        <script type="text/javascript" src="../libs/jquery.1.7.2.min.js">
+        </script>
+        <script src="../libs/jquery-ui.1.8.15.min.js">
+        </script>
+        <script type="text/javascript" src="../libs/d3.v2.min.js">
+        </script>
+        <script type="text/javascript" src="../libs/rickshaw.min.js">
+        </script>
+        <script type="text/javascript" src="../libs/moment.min.js">
+        </script>
+        <script type="text/javascript" src="../libs/extensions.js">
+        </script>
+        <!--Load Scripts-->
+        <script type="text/javascript" src="../parseData.js">
+        </script>
+        <script type="text/javascript" src="../libs/jquery.easing.js">
+        </script>
+        <script type="text/javascript" src="../libs/jquery.collapse.js">
+        </script>
+        <script type="text/javascript">
+        	$(function() {
 
-<!--Load Libraries-->
-<script type="text/javascript" src="../libs/jquery.1.7.2.min.js"></script>
-<script src="../libs/jquery-ui.1.8.15.min.js"></script>
-<script type="text/javascript" src="../libs/d3.v2.min.js"></script>
-<script type="text/javascript" src="../libs/rickshaw.min.js"></script>
-<script type="text/javascript" src="../libs/extensions.js"></script>
+	    $('#collapser').jqcollapse({
+	        slide: true,
+	        speed: 1000,
+	        easing: 'easeOutCubic'
+	    });
 
-<!--Load Scripts-->
-<script type="text/javascript" src="../parseData.js"></script>
-<script type="text/javascript" src="../libs/jquery.easing.js"></script>
-<script type="text/javascript" src="../libs/jquery.collapse.js"></script>
-<script type="text/javascript">
-	
-	$(function(){
-		
-		$('#collapser').jqcollapse({
-		   slide: true,
-		   speed: 1000,
-		   easing: 'easeOutCubic'
-		});
-		
 	});
+
 	
-</script>
+        </script>
 
-<!--Load Data-->
-<script type="text/javascript" src="../../data/analysis/json/cf4s1.js"></script>
+        <!--Load Data-->
+        <script type="text/javascript" src="../../data/analysis/json/cf4s1.js">
+        </script>
+        <script type="text/javascript" src="../../data/analysis/json/notejson.js">
+        </script>
 
-
-<!--Load Styles-->
-<link rel="stylesheet" href="../../styles/themes/spacelab/bootstrap.min.css"/>
-<link rel="stylesheet/less" href="../../styles/themes/spacelab/bootswatch.less"/>
-<link rel="stylesheet/less" href="../../styles/themes/spacelab/variables.less"/>
-<link rel="stylesheet/less" href="../../styles/less-1.3.0.min.less"/>
-<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"/>
-<link rel="stylesheet" href="../../styles/contentpage.css"/>
-<link rel="stylesheet" href="../libs/rickshaw.min.css"/>
-<link type="text/css" rel="stylesheet" href="../../styles/vis/graph.css"/>
-<link type="text/css" rel="stylesheet" href="../../styles/vis/detail.css"/>
-<link type="text/css" rel="stylesheet" href="../../styles/vis/legend.css"/>
-<link type="text/css" rel="stylesheet" href="../../styles/vis/extensions.css"/>
-
-<link type="text/css" rel="stylesheet" href="../../styles/vis/extra.css"/>
-
-<style>
-	/*ul { margin: 0; padding: 0; }
-	ul li { margin: 10px 0 10px 25px; padding: 0; list-style: none; }*/
-	
-	.jqcNode { font-weight: bold; color: #4183C4; }
-	
-</style>
-
-<title>Visualizations</title>
-
-<!--[if lte IE 7]>
-<style>
-.content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
-ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
-</style>
-<![endif]-->
-
-<style>
-</style>
+        <!--Load Styles-->
+        <link rel="stylesheet" href="../../styles/themes/cerulean/bootstrap.min.css"
+        />
+        <link rel="stylesheet/less" href="../../styles/themes/cerulean/bootswatch.less"
+        />
+        <link rel="stylesheet/less" href="../../styles/themes/cerulean/variables.less"
+        />
+        <link rel="stylesheet/less" href="../../styles/less-1.3.0.min.less" />
+        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+        />
+        <link rel="stylesheet" href="../../styles/contentpage.css" />
+        <link rel="stylesheet" href="../libs/rickshaw.min.css" />
+        <link type="text/css" rel="stylesheet" href="../../styles/vis/graph.css"
+        />
+        <link type="text/css" rel="stylesheet" href="../../styles/vis/detail.css"
+        />
+        <link type="text/css" rel="stylesheet" href="../../styles/vis/legend.css"
+        />
+        <link type="text/css" rel="stylesheet" href="../../styles/vis/extensions.css"
+        />
+        <link type="text/css" rel="stylesheet" href="../../styles/vis/extra.css"
+        />
+        <style>
+            /*ul { margin: 0; padding: 0; } ul li { margin: 10px 0 10px 25px; padding:
+            0; list-style: none; }*/ .jqcNode { font-weight: bold; color: #4183C4;
+            }
+        </style>
 
 
-</head>
+        <title>
+            Visualizations
+        </title>
 
-
-<body>
-
-<div class="navbar">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="brand" href="Index.html">AFFECTIVE SYNCHRONY</a>
-            <ul class="nav">
-			  <li><a href="../../content/Introduction.html">INTRO</a></li>
-		      <li><a href="../../content/Background.html">BACKGROUND</a></li>
-		      <li><a href="../../content/DataSet.html">DATA</a></li>
-		      <li><a href="../../content/Methods.html">METHODS</a></li>
-		      <li><a href="../../content/Investigations.html">INVESTIGATIONS</a></li>
-			  <li><a href="../../content/Discussion.html">DISCUSSION</a></li>
-		      <li><a href="../../content/FutureWork.html">FUTURE WORK</a></li>
-		      <li><a href="../../content/References.html">REFERENCES</a></li>
-		      <li><a href="../../content/Acknowledgements.html">THANKS</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-
-
-<div class="container-fluid">
-      <div class="row-fluid"><!--Row 1: Sidebar Navigation, Title, Summary-->
-        
-		<!--Sidebar Navigation-->
-		<div class="span2">          
-		<!--<div class="well">
+        <!--[if lte IE 7]>
+            <style>
+                .content { margin-right: -1px; } /* this 1px negative margin can be placed
+                on any of the columns in this layout with the same corrective effect. */
+                ul.nav a { zoom: 1; } /* the zoom property gives IE the hasLayout trigger
+                it needs to correct extra whiltespace between the links */
+            </style>
+        <![endif]-->
+        <style>
+        </style>
+    </head>
+    
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="../../content/Index.html">AFFECTIVE SYNCHRONY</a>
+                    <ul class="nav">
+                        <li>
+                            <a href="../../content/Introduction.html">INTRO</a>
+                        </li>
+                        <li>
+                            <a href="../../content/Background.html">BACKGROUND</a>
+                        </li>
+                        <li>
+                            <a href="../../content/DataSet.html">DATA</a>
+                        </li>
+                        <li>
+                            <a href="../../content/Methods.html">METHODS</a>
+                        </li>
+                        <li>
+                            <a href="../../content/Investigations.html">INVESTIGATIONS</a>
+                        </li>
+                        <li>
+                            <a href="../../content/Discussion.html">DISCUSSION</a>
+                        </li>
+                        <li>
+                            <a href="../../content/FutureWork.html">FUTURE WORK</a>
+                        </li>
+                        <li>
+                            <a href="../../content/References.html">REFERENCES</a>
+                        </li>
+                        <li>
+                            <a href="../../content/Acknowledgements.html">THANKS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <!--Row 1: Sidebar Navigation, Title, Summary-->
+                <!--Sidebar Navigation-->
+                <div class="span2">
+                    <!--<div class="well">
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
 		      <li><a href="Visualizations.html">VISUALIZATIONS</a></li>
@@ -108,373 +140,518 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
             </ul>
           </div>
 		-->
-		
-		<div class="well">
-            <ul class="nav nav-list">
-			  <li><a href="../../content/Visualizations.html">Visualizations</a></li>
-			<ul class="nav nav-list">
-		      <li><a href="Subject4.html">Subject 4</a></li>
-			  <li><a href="Subject10.html">Subject 10</a></li>
-			  <li>Subject 13</a></li>
-				<ul class="nav nav-list">
-			  		<li><a href="subject4.html">Session 1</a></li>
-					<li><a href="subject10.html">Session 5.1</a></li>
-					<li><a href="subject10.html">Session 5.2</a></li>
-				</ul>
-			  <li><a href="Subject 14.html">Subject 14</a></li>
-            </ul>
-          </div>
-		
-        </div><!--/sidebar navigation span2-->	
-			
-			
-		<!---Title and Summary Column-->
-		<div class="span8">
-			
-			<!--Title Breadcrumb Bar Row-->
-			<div class="row-fluid">
-				
-				<ul class="breadcrumb">
-				  <li><b>Subject 4</b><span class="divider">:</span>
-				  </li>
-				  <li class="active"><b>Session 1</b></li>
-				</ul>
-			</div>
-			
-			<!--Summary/Description Row-->
-			<div class="row-fluid">
-				
-					<div class="well">
-						<ul id="description" style="list-style-type:none;padding:0;margin:0;"> 
-							<li><b>Summary: </b>Check time series to view them on the chart. Axes will update for the remaining series.
-							</li>
-							<li><b>Duration: </b>12 min 24 seconds
-							</li>
-							<li><b>Analysis: </b>Check time series to view them on the chart. Axes will update for the remaining series.
-							</li>
-						</ul>
-					</div><!--/well-->	
-			</div><!--/row-fluid-->	
-			
-		</div><!--/span 8 title and summary column-->	
-			
-			<!--Third empty span 2 column-->
-			<div class="span2"></div>
-	</div><!-- end sidebar title summary row-->
-	
-
-	
-	<div class="row-fluid"><!--ROW 2: Instructions, eda charts, tools-->
-
-			<!--Instructional span 2 column-->
-			<div class="span2">
-				<div class="well">
-				<p> The following plots allow you, the user, to explore the data set. Click to expand option descriptions.</p>
-				<ul id="collapser" style="list-style-type:none;padding:0;margin:0;"> 
-					<li><b>Select Series</b>
-						<ul style="list-style-type:none;padding:0;margin:0;">
-							<li>Check time series to view them on the chart. Axes will update for the remaining series.</li>
-						</ul>
-					</li>
-					<li><b> Reorder Series</b>
-						<ul style="list-style-type:none;padding:0;margin:0;">
-							<li>Drag and drop the time series to reorder them</li>
-						</ul>
-					</li>
-					<li><b>Highlight Series</b>
-						<ul style="list-style-type:none;padding:0;margin:0;">
-							<li>Hovering over the name of a specific time series will highlight it while greying out other time series.</li>
-						</ul>
-					</li>
-					<li><b>Select Chart Type</b>
-						<ul style="list-style-type:none;padding:0;margin:0;">
-							<li>Controls and toggles allow you to control which data you are looking at, and allow for stacked charts, line charts, bar chart, and scatter plot views of the data.</li>
-						</ul>
-					</li>
-					<li><b>Interpolation</b>
-						<ul style="list-style-type:none;padding:0;margin:0;">
-							<li>The view also allows you to switch between different types of interpolation between time points, options being cardinal, linear, and stepped interpolation.</li>
-						</ul>
-					</li>
-					<li><b>Annotations</b>
-						<ul style="list-style-type:none;padding:0;margin:0;">
-							<li>Hover over the grey dots that lie between the chart and the slider bar to see annotations</li>
-						</ul>
-					</li>
-					<li><b>Zoom</b>
-						<ul style="list-style-type:none;padding:0;margin:0;">
-							<li>Use the sliders to zoom in to a time series, and mouse over grey dots along the bottom of the time series for annotations.</li>
-						</ul>
-					</li>
-				</ul>
-				</div><!--/well-->	
-			</div><!--/span2-->	
-				
-			
-
-			
-			<!---Raw EDA Charts-->
-			
-				<!---Time Series-->
-				<div class="span8">
-					<div id="chart_container">
-						
-						<h4>RAW EDA VALUES</h4>
-						<div id="chart"></div>
-						<div id="timeline"></div>
-						<div id="slider"></div>
-						<div id="chartNotes">
-						<!--<p>This chart depics the raw and filtered EDA values for the child and occupational therapist during the time segment indicated. It defaults to a <b>stacked chart</b> in order to orient the viewer to how many series are present, and what the range of values amongst the time series in the chart. Engagement vs Non-Engagement periods are indicated with a grey backdrop. <b>Stream Graphs</b> can be used to get a deeper understanding of the difference in magnitude of values between two points while taking the focus off the explicit values of the points. In this specific case, we see that the general value readings for the child were much higher when we examine EDAs on the streamgraph. </p>-->
-						</div>
-					</div>
-				</div>
-			
-				<!---Control Panel-->
-				<div class="span2">
-				
-					<form id="side_panel">
-						<h4>SETTINGS</h4>
-						<section><div id="legend"></div></section>
-						<section>
-							<div id="renderer_form" class="toggler">
-								<input type="radio" name="renderer" id="area" value="area" checked>
-								<label for="area">area</label>
-								<input type="radio" name="renderer" id="bar" value="bar">
-								<label for="bar">bar</label>
-								<input type="radio" name="renderer" id="line" value="line">
-								<label for="line">line</label>
-								<input type="radio" name="renderer" id="scatter" value="scatterplot">
-								<label for="scatter">scatter</label>
-							</div>
-						</section>
-						<section>
-							<div id="offset_form">
-								<label for="stack">
-									<input type="radio" name="offset" id="stack" value="zero" checked>
-									<span>stack</span>
-								</label>
-								<label for="stream">
-									<input type="radio" name="offset" id="stream" value="wiggle">
-									<span>stream</span>
-								</label>
-								<label for="pct">
-									<input type="radio" name="offset" id="pct" value="expand">
-									<span>percent</span>
-								</label>
-								<label for="value">
-									<input type="radio" name="offset" id="value" value="value">
-									<span>value</span>
-								</label>
-							</div>
-							<div id="interpolation_form">
-								<label for="cardinal">
-									<input type="radio" name="interpolation" id="cardinal" value="cardinal" checked>
-									<span>cardinal</span>
-								</label>
-								<label for="linear">
-									<input type="radio" name="interpolation" id="linear" value="linear">
-									<span>linear</span>
-								</label>
-								<label for="step">
-									<input type="radio" name="interpolation" id="step" value="step-after">
-									<span>step</span>
-								</label>
-							</div>
-						</section>
-						<!--<section>
+                    <div class="well">
+                        <ul class="nav nav-list">
+                            <li>
+                                <a href="../../content/Visualizations.html">Visualizations</a>
+                            </li>
+                            <ul class="nav nav-list">
+                                <li class="active">
+                                    <a href="../../vis/cf4s1/subject4.html">Subject 4</a>
+                                </li>
+                                <li>
+                                    <a href="../../vis/cf10s1/Subject10s1.html">Subject 10</a>
+                                </li>
+                                <li>
+                                    Subject 13
+                                    </a>
+                                </li>
+                                <ul class="nav nav-list">
+                                    <li>
+                                        <a href="../../vis/cf13s0/Subject13s0.html">Session 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="../../vis/cf13s4_1/Subject13s4_1.html">Session 5.1</a>
+                                    </li>
+                                    <li>
+                                        <a href="../../vis/cf13s4_2/Subject13s4_2.html">Session 5.2</a>
+                                    </li>
+                                </ul>
+                                <li>
+                                    <a href="../../vis/cf14s1/Subject14s1.html">Subject 14</a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+                <!--/sidebar navigation span2-->
+                <!---Title and Summary Column-->
+                <div class="span8">
+                    <!--Title Breadcrumb Bar Row-->
+                    <div class="row-fluid">
+                        <ul class="breadcrumb">
+                            <li>
+                                <b>
+                                    Subject 4
+                                </b>
+                                <span class="divider">
+                                    :
+                                </span>
+                            </li>
+                            <li class="active">
+                                <b>
+                                    Session 1
+                                </b>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Summary/Description Row-->
+                    <div class="row-fluid">
+                        <div class="well">
+                            <ul id="description" style="list-style-type:none;padding:0;margin:0;">
+                                <li>
+                                    <b>
+                                        Summary:
+                                    </b>
+                                    In this segment the child is pretending to be a superhero on a quest to defeat Lex Luthor for the first half of the segment. The session involves the child swinging in a harness swing while destroying block towers with their sword, and then cleaning the blocks up with the therapist. The child is engaged with the therapist for the majority of the session, and converses frequently with the therapist throughout the session. <br>&nbsp;<br>
+                                </li>                                
+                                <li>
+                                    <b>
+                                        Duration:
+                                    </b>
+                                    12 min 24 seconds <br>&nbsp;<br>
+                                </li>
+                                <li>
+                                    <b>
+                                        Analysis:
+                                    </b>
+                                    Analysis: This dataset is particularly notable due to the high ultimate correlation between the two EDA samples (.8). The two clear rises in correlation correspond relatively accurately to periods of time during which the child is excitedly conversing and interacting with the therapist. <br>&nbsp;<br>
+                                </li>
+                                <li>
+                                    <b>
+                                        Notes:
+                                    </b>
+                                    In order to view different types of visualizations, one can move from the stacked area chart to the other types of charts, but in order to move backwards to different type of plot, one must refresh the page before selecting the next type of plot. The initial default display is of stacked data in order to emphasize the differences in magnitude for the time series shown. A more traditional view of the data (ie actual values) can be obtained by clicking the "line" option directly under the legend, and the "values" option in the bottom section of the controls. The chart's sizes are also drawn according to window size, so if you would like the overall chart to be longer or shorter, you can resize the window and hit refresh, and the chart will redraw fitted to the new window size. 
+                                </li>                                
+                            </ul>
+                        </div>
+                        <!--/well-->
+                    </div>
+                    <!--/row-fluid-->
+                </div>
+                <!--/span 8 title and summary column-->
+                <!--Third empty span 2 column-->
+                <div class="span2">
+                </div>
+            </div>
+            <!-- end sidebar title summary row-->
+            <div class="row-fluid">
+                <!--ROW 2: Instructions, eda charts, tools-->
+                <!--Instructional span 2 column-->
+                <div class="span2">
+                    <div class="well">
+                        <p>
+                            The following plots allow you, the user, to explore the data set. Click
+                            to expand option descriptions.
+                        </p>
+                        <ul id="collapser" style="list-style-type:none;padding:0;margin:0;">
+                            <li>
+                                <b>
+                                    Select Series
+                                </b>
+                                <ul style="list-style-type:none;padding:0;margin:0;">
+                                    <li>
+                                        Check time series to view them on the chart. Axes will update for the
+                                        remaining series.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>
+                                    Reorder Series
+                                </b>
+                                <ul style="list-style-type:none;padding:0;margin:0;">
+                                    <li>
+                                        Drag and drop the time series to reorder them
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>
+                                    Highlight Series
+                                </b>
+                                <ul style="list-style-type:none;padding:0;margin:0;">
+                                    <li>
+                                        Hovering over the name of a specific time series will highlight it while
+                                        greying out other time series.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>
+                                    Select Chart Type
+                                </b>
+                                <ul style="list-style-type:none;padding:0;margin:0;">
+                                    <li>
+                                        Controls and toggles allow you to control which data you are looking at,
+                                        and allow for stacked charts, line charts, bar chart, and scatter plot
+                                        views of the data. In order to view different types of charts, one can move from the stacked area chart to the other types of charts, but in order to move backwards to different type of plot, one must refresh the page before selecting the next type of plot.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>
+                                    Interpolation
+                                </b>
+                                <ul style="list-style-type:none;padding:0;margin:0;">
+                                    <li>
+                                        The view also allows you to switch between different types of interpolation
+                                        between time points, options being cardinal, linear, and stepped interpolation.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>
+                                    Annotations
+                                </b>
+                                <ul style="list-style-type:none;padding:0;margin:0;">
+                                    <li>
+                                        Hover over the grey dots that lie between the chart and the slider bar
+                                        to see annotations
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>
+                                    Zoom
+                                </b>
+                                <ul style="list-style-type:none;padding:0;margin:0;">
+                                    <li>
+                                        Use the sliders to zoom in to a time series, and mouse over grey dots
+                                        along the bottom of the time series for annotations.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/well-->
+                </div>
+                <!--/span2-->
+                <!---Raw EDA Charts-->
+                <!---Time Series-->
+                <div class="span8">
+                    <div id="chart_container">
+                        <h4>
+                            RAW EDA VALUES [&micro;S] vs TIME [s]
+                        </h4>
+                        <div id="chart">
+                        </div>
+                        <div id="timeline">
+                        </div>
+                        <div id="slider">
+                        </div>
+                        <div id="chartNotes">
+                            <!--<p>This chart depics the raw and filtered EDA values for the child and occupational therapist during the time segment indicated. It defaults to a <b>stacked chart</b> in order to orient the viewer to how many series are present, and what the range of values amongst the time series in the chart. Engagement vs Non-Engagement periods are indicated with a grey backdrop. <b>Stream Graphs</b> can be used to get a deeper understanding of the difference in magnitude of values between two points while taking the focus off the explicit values of the points. In this specific case, we see that the general value readings for the child were much higher when we examine EDAs on the streamgraph. </p>-->
+                        </div>
+                    </div>
+                </div>
+                <!---Control Panel-->
+                <div class="span2">
+                    <form id="side_panel">
+                        <h4>
+                            SETTINGS
+                        </h4>
+                        <section>
+                            <div id="legend">
+                            </div>
+                        </section>
+                        <section>
+                            <div id="renderer_form" class="toggler">
+                                <input type="radio" name="renderer" id="area" value="area" checked>
+                                <label for="area">
+                                    area
+                                </label>
+                                <input type="radio" name="renderer" id="bar" value="bar">
+                                <label for="bar">
+                                    bar
+                                </label>
+                                <input type="radio" name="renderer" id="line" value="line">
+                                <label for="line">
+                                    line
+                                </label>
+                                <input type="radio" name="renderer" id="scatter" value="scatterplot">
+                                <label for="scatter">
+                                    scatter
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <div id="offset_form">
+                                <label for="stack">
+                                    <input type="radio" name="offset" id="stack" value="zero" checked>
+                                    <span>
+                                        stack
+                                    </span>
+                                </label>
+                                <label for="stream">
+                                    <input type="radio" name="offset" id="stream" value="wiggle">
+                                    <span>
+                                        stream
+                                    </span>
+                                </label>
+                                <label for="pct">
+                                    <input type="radio" name="offset" id="pct" value="expand">
+                                    <span>
+                                        percent
+                                    </span>
+                                </label>
+                                <label for="value">
+                                    <input type="radio" name="offset" id="value" value="value">
+                                    <span>
+                                        value
+                                    </span>
+                                </label>
+                            </div>
+                            <div id="interpolation_form">
+                                <label for="cardinal">
+                                    <input type="radio" name="interpolation" id="cardinal" value="cardinal"
+                                    checked>
+                                    <span>
+                                        cardinal
+                                    </span>
+                                </label>
+                                <label for="linear">
+                                    <input type="radio" name="interpolation" id="linear" value="linear">
+                                    <span>
+                                        linear
+                                    </span>
+                                </label>
+                                <label for="step">
+                                    <input type="radio" name="interpolation" id="step" value="step-after">
+                                    <span>
+                                        step
+                                    </span>
+                                </label>
+                            </div>
+                        </section>
+                        <!--<section>
 							<h6>Smoothing</h6>
 							<div id="smoother"></div>
 						</section>-->
-						<section></section>
-					</form>
-				
-				</div><!--/control panel 1 span 2-->	
-			
-			</div><!-- end row-fluid -->
-			
-			<div class="row-fluid">
-			<iframe src="sub4corrframe.html" width="100%" height="400" frameBorder="0">Browser not compatible.</iframe>
-			</div>
+                        <section>
+                        </section>
+                    </form>
+                </div>
+                <!--/control panel 1 span 2-->
+            </div>
+            <!-- end row-fluid -->
+            <div class="row-fluid">
+                <iframe src="sub4corrframe.html" class="restricted" width="100%" height="400" frameBorder="0" scrolling="no">
+                    Browser not compatible.
+                </iframe>
+            </div>
+            <div class="row-fluid">
+                <iframe src="sub4peakframe.html" class="restricted" width="100%" height="400" frameBorder="0" scrolling="no">
+                    Browser not compatible.
+                </iframe>
+            </div>
+            <!-- Footer Row -->
+            <div class="row-fluid">
+                <div class="span2">
+                </div>
+                <div class="span8">
+                    <div class="footer" style="text-align:center">
+                        <p>
+                            Parama Pal | MAS.630 | Fall 2011
+                        </p>
+                    </div>
+                </div>
+                <div class="span2">
+                </div>
+            </div>
+        </div>
+        <!-- end span -->
+        </div>
+        <script>
+        /////////////////////////// JAVASCRIPT STARTS HERE ///////////////////////////
+//first raw eda plot
+//var original_date = 
+var seriesData = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+];
+var random = new Rickshaw.Fixtures.RandomData(1524);
 
-			<div class="row-fluid">
-			<iframe src="sub4peakframe.html" width="100%" height="350" frameBorder="0">Browser not compatible.</iframe>
-			</div>
+for (var i = 0; i < 1524; i++) {
+    random.addData(seriesData);
+}
 
-			<!-- Footer Row -->
-			<div class="row-fluid">
-			
-				<div class="span2"></div>
-				
-				<div class="span8">
-					<div class="footer" style="text-align:center">
-						<p>Parama Pal | MAS.630 | Fall 2011</p>
-					</div>
-				</div>
-				
-				<div class="span2"></div>
-				
-			</div>
-			
-		</div><!-- end span -->
-		</div>
-		
-		
-		
-		<script>
-/////////////////////////// JAVASCRIPT STARTS HERE ///////////////////////////
-		//first raw eda plot
-		
-		
-		var seriesData = [ [], [], [], [], [], [], [], [], [] ];
-		var random = new Rickshaw.Fixtures.RandomData(1524);
+seriesData[0] = convertArrayCoordsWithTime(cf4s1.ceda);
+seriesData[1] = convertArrayCoordsWithTime(cf4s1.oeda);
+seriesData[2] = convertArrayCoordsWithTime(cf4s1.cbp);
+seriesData[3] = convertArrayCoordsWithTime(cf4s1.obp);
+seriesData[4] = convertArrayCoordsWithTime(cf4s1.coc);
+seriesData[5] = convertArrayCoordsWithTime(cf4s1.cwc);
 
-		for (var i = 0; i < 1524; i++) {
-			random.addData(seriesData);
-		}
-		
-		seriesData[0]=convertArrayCoordsWithTime(cf4s1.ceda);
-		seriesData[1]=convertArrayCoordsWithTime(cf4s1.oeda);
-		seriesData[2]=convertArrayCoordsWithTime(cf4s1.cbp);
-		seriesData[3]=convertArrayCoordsWithTime(cf4s1.obp);
-		seriesData[4]=convertArrayCoordsWithTime(cf4s1.coc);
-		seriesData[5]=convertArrayCoordsWithTime(cf4s1.cwc);
+var palette = new Rickshaw.Color.Palette({
+    scheme: 'spectrum14'
+});
+//var palette = d3.scale.category10();
+// instantiate our graph!
+widthB = $("div.span8"); //figure out what div to access to get desired width
+paddingBox = 10;
+widthBox = $(widthB).width() - paddingBox;
 
-		var palette = new Rickshaw.Color.Palette( { scheme: 'spectrum14' } );
-		//var palette = d3.scale.category10();
+var graph = new Rickshaw.Graph({
+    element: document.getElementById("chart"),
+    width: widthBox,
+    //height: 500,
+    renderer: 'area',
+    stroke: true,
+    series: [{
+        color: palette.color(4),
+        data: seriesData[3],
+        name: 'Filtered OT EDA'
+    }, {
+        color: palette.color(6),
+        data: seriesData[2],
+        name: 'Filtered Child EDA'
+    }, {
+        color: palette.color(5),
+        data: seriesData[1],
+        name: 'Raw OT EDA'
+    }, {
+        color: palette.color(7),
+        data: seriesData[0],
+        name: 'Raw Child EDA'
+    }]
+});
 
-		// instantiate our graph!
-		widthB = $("div.span8"); //figure out what div to access to get desired width
-		paddingBox = 10;
-		widthBox = $(widthB).width()-paddingBox;
+graph.render();
 
-		var graph = new Rickshaw.Graph( {
-			element: document.getElementById("chart"),
-			width: widthBox,
-			//height: 500,
-			renderer: 'area',
-			stroke: true,
-			series: [
-				{
-					color: palette.color(4),
-					data: seriesData[3],
-					name: 'Filtered OT EDA'
-				}, {
-					color: palette.color(6),
-					data: seriesData[2],
-					name: 'Filtered Child EDA'
-				}, {
-					color: palette.color(5),
-					data: seriesData[1],
-					name: 'Raw OT EDA'
-				}, {
-					color: palette.color(7),
-					data: seriesData[0],
-					name: 'Raw Child EDA'
-				}
-			]
-		} );
+var slider = new Rickshaw.Graph.RangeSlider({
+    graph: graph,
+    element: $('#slider')
+});
 
-		graph.render();
+var hoverDetail = new Rickshaw.Graph.HoverDetail({
+    graph: graph,
+    xFormatter: function(x) {
+        var curr_date = new Date(x * 1000);
 
-		var slider = new Rickshaw.Graph.RangeSlider( {
-			graph: graph,
-			element: $('#slider')
-		} );
+        var curr_min = curr_date.getMinutes();
+        if (curr_min < 10) {
+            curr_min = "0" + curr_min;
+        }
+        var curr_sec = curr_date.getSeconds();
+        if (curr_sec < 10) {
+            curr_sec = "0" + curr_sec;
+        }
+        var time_string = "" + curr_min + ":" + curr_sec + "";
+        //console.log(time_string + " this is the tester");
+        //console.log("raw x is: "+x);
 
-		var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-			graph: graph
-		} );
+        return time_string;
+    },
+    yFormatter: function(y) {
+    	//return y + " &micro;S"
+    	console.log(y)
+    	var yval = (y).toFixed(2) + ""
+    	var ystring = yval+" &micro;S";
+    	return ystring;
+    }
+});
 
-		var annotator = new Rickshaw.Graph.Annotate( {
-			graph: graph,
-			element: document.getElementById('timeline')
-		} );
+var annotator = new Rickshaw.Graph.Annotate({
+    graph: graph,
+    element: document.getElementById('timeline')
+});
 
-		var legend = new Rickshaw.Graph.Legend( {
-			graph: graph,
-			element: document.getElementById('legend')
+var legend = new Rickshaw.Graph.Legend({
+    graph: graph,
+    element: document.getElementById('legend')
 
-		} );
+});
 
-		var shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
-			graph: graph,
-			legend: legend
-		} );
+var shelving = new Rickshaw.Graph.Behavior.Series.Toggle({
+    graph: graph,
+    legend: legend
+});
 
-		var order = new Rickshaw.Graph.Behavior.Series.Order( {
-			graph: graph,
-			legend: legend
-		} );
+var order = new Rickshaw.Graph.Behavior.Series.Order({
+    graph: graph,
+    legend: legend
+});
 
-		var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
-			graph: graph,
-			legend: legend
-		} );
+var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight({
+    graph: graph,
+    legend: legend
+});
 
-		//var smoother = new Rickshaw.Graph.Smoother( {
-		//	graph: graph,
-		//	element: $('#smoother')
-		//} );
+//var smoother = new Rickshaw.Graph.Smoother( {
+//	graph: graph,
+//	element: $('#smoother')
+//} );
+var ticksTreatment = 'glow';
 
-		var ticksTreatment = 'glow';
+var xAxis = new Rickshaw.Graph.Axis.Time({
+    graph: graph,
+    ticksTreatment: ticksTreatment
+});
 
-		var xAxis = new Rickshaw.Graph.Axis.Time( {
-			graph: graph,
-			ticksTreatment: ticksTreatment
-		} );
+xAxis.render();
 
-		xAxis.render();
+var yAxis = new Rickshaw.Graph.Axis.Y({
+    graph: graph,
+    tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+    ticksTreatment: ticksTreatment
+});
 
-		var yAxis = new Rickshaw.Graph.Axis.Y( {
-			graph: graph,
-			tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-			ticksTreatment: ticksTreatment
-		} );
-
-		yAxis.render();
+yAxis.render();
 
 
-		var controls = new RenderControls( {
-			element: document.querySelector('form'),
-			graph: graph
-		} );
+var controls = new RenderControls({
+    element: document.querySelector('form'),
+    graph: graph
+});
 
-		// add some data every so often
+// add some data every so often
 
-		var messages = [
-			"Changed home page welcome message",
-			"Minified JS and CSS",
-			"Changed button color from blue to green",
-			"Refactored SQL query to use indexed columns",
-			"Added additional logging for debugging",
-			"Fixed typo",
-			"Rewrite conditional logic for clarity",
-			"Added documentation for new methods"
-		];
+var messages2 = c4s1anotes;
+var message2_times = c4s1atimes;
 
-		//  setInterval( function() {
-		//	  random.addData(seriesData);
-		//	  graph.update();
+//  setInterval( function() {
+//	  random.addData(seriesData);
+//	  graph.update();
+//}, 3000 );
 
-		//}, 3000 );
+function addAnnotation(force) {
+    //if (messages.length > 0 && (force || Math.random() >= 0.95)) {
+        //annotator.add(seriesData[2][seriesData[2].length - 1].x, messages.shift());
+    //}
+    if(force)
+    {
+    for (var i=0;i<messages2.length;i++){
+        curr_min = Math.floor(message2_times[i]/60);
+        if (curr_min < 10) {
+            curr_min = "0" + curr_min;
+        }
+        console.log("mins is: "+ curr_min);
+        curr_sec = message2_times[i]%60;
+        if (curr_sec < 10) {
+            curr_sec = "0" + curr_sec;
+        }
+        console.log("secs is: "+curr_sec);
+        adjustedMessage = ""+curr_min+":"+curr_sec+" - "+messages2[i]+"";
+        console.log(adjustedMessage);
+		annotator.add(message2_times[i], adjustedMessage);
+		console.log("added!")
+    }
+}
+}
 
-		function addAnnotation(force) {
-			if (messages.length > 0 && (force || Math.random() >= 0.95)) {
-				annotator.add(seriesData[2][seriesData[2].length-1].x, messages.shift());
-			}
-		}
+addAnnotation(true);
 
-		addAnnotation(true);
-		
-		//setTimeout( function() { setInterval( addAnnotation, 6000 ) }, 6000 );
-		
-		
-		
+graph.update();
 
-		</script>
-		
-		
-		
-		
-	</body>
+//setTimeout( function() { setInterval( addAnnotation, 6000 ) }, 6000 );
+        </script>
+    </body>
+
 </html>

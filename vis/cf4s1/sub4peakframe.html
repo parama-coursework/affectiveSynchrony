@@ -30,12 +30,13 @@
 
 <!--Load Data-->
 <script type="text/javascript" src="../../data/analysis/json/cf4s1.js"></script>
+<script type="text/javascript" src="../../data/analysis/json/notejson.js"></script>
 
 
 <!--Load Styles-->
-<link rel="stylesheet" href="../../styles/themes/spacelab/bootstrap.min.css"/>
-<link rel="stylesheet/less" href="../../styles/themes/spacelab/bootswatch.less"/>
-<link rel="stylesheet/less" href="../../styles/themes/spacelab/variables.less"/>
+<link rel="stylesheet" href="../../styles/themes/cerulean/bootstrap.min.css"/>
+<link rel="stylesheet/less" href="../../styles/themes/cerulean/bootswatch.less"/>
+<link rel="stylesheet/less" href="../../styles/themes/cerulean/variables.less"/>
 <link rel="stylesheet/less" href="../../styles/less-1.3.0.min.less"/>
 <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"/>
 <link rel="stylesheet" href="../../styles/contentpage.css"/>
@@ -63,12 +64,12 @@
 	<div class="span8">
 		<div id="chart_container">
 			
-			<h4>PEAK FREQUENCY VALUES</h4>
+			<h4>PEAK FREQUENCY VALUES vs TIME [s]</h4>
 			<div id="chart"></div>
 			<div id="timeline"></div>
 			<div id="slider"></div>
 			<div id="chartNotes">
-			<p> In this specific case, we see that the general value readings for the child were much higher when we examine EDAs on the streamgraph. </p>
+			<p> Peak Frequency Values are calulated over a sliding 30 second window. </p>
 			</div>
 		</div>
 	</div>
@@ -187,7 +188,30 @@
 				} );
 
 				var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-					graph: graph
+					graph: graph,
+    xFormatter: function(x) {
+        var curr_date = new Date(x * 1000);
+
+        var curr_min = curr_date.getMinutes();
+        if (curr_min < 10) {
+            curr_min = "0" + curr_min;
+        }
+        var curr_sec = curr_date.getSeconds();
+        if (curr_sec < 10) {
+            curr_sec = "0" + curr_sec;
+        }
+        var time_string = "" + curr_min + ":" + curr_sec + "";
+        console.log(time_string + " this is the tester");
+        console.log("raw x is: "+x);
+
+        return time_string;
+    },    yFormatter: function(y) {
+    	//return y + " &micro;S"
+    	console.log(y)
+    	var yval = (y).toFixed(0) + ""
+    	var ystring = yval+" peaks";
+    	return ystring;
+    }
 				} );
 
 				var annotator = new Rickshaw.Graph.Annotate( {
@@ -244,42 +268,47 @@
 					graph: graph
 				} );
 
-				// add some data every so often
+// add some data every so often
 
-				var messages = [
-					"Changed home page welcome message",
-					"Minified JS and CSS",
-					"Changed button color from blue to green",
-					"Refactored SQL query to use indexed columns",
-					"Added additional logging for debugging",
-					"Fixed typo",
-					"Rewrite conditional logic for clarity",
-					"Added documentation for new methods"
-				];
+var messages2 = c4s1anotes;
+var message2_times = c4s1atimes;
 
-				//  setInterval( function() {
-				//	  random.addData(seriesData);
-				//	  graph.update();
+//  setInterval( function() {
+//	  random.addData(seriesData);
+//	  graph.update();
+//}, 3000 );
 
-				//}, 3000 );
+function addAnnotation(force) {
+    //if (messages.length > 0 && (force || Math.random() >= 0.95)) {
+        //annotator.add(seriesData[2][seriesData[2].length - 1].x, messages.shift());
+    //}
+    if(force)
+    {
+    for (var i=0;i<messages2.length;i++){
+        curr_min = Math.floor(message2_times[i]/60);
+        if (curr_min < 10) {
+            curr_min = "0" + curr_min;
+        }
+        console.log("mins is: "+ curr_min);
+        curr_sec = message2_times[i]%60;
+        if (curr_sec < 10) {
+            curr_sec = "0" + curr_sec;
+        }
+        console.log("secs is: "+curr_sec);
+        adjustedMessage = ""+curr_min+":"+curr_sec+" - "+messages2[i]+"";
+        console.log(adjustedMessage);
+		annotator.add(message2_times[i], adjustedMessage);
+		console.log("added!")
+    }
+}
+}
 
-				function addAnnotation(force) {
-					if (messages.length > 0 && (force || Math.random() >= 0.95)) {
-						annotator.add(seriesData[2][seriesData[2].length-1].x, messages.shift());
-					}
-				}
+addAnnotation(true);
 
-				addAnnotation(true);
+graph.update();
 
-				//setTimeout( function() { setInterval( addAnnotation, 6000 ) }, 6000 );
+//setTimeout( function() { setInterval( addAnnotation, 6000 ) }, 6000 );
+        </script>
+    </body>
 
-
-
-
-				</script>
-
-
-
-
-			</body>
-		</html>
+</html>

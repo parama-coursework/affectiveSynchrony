@@ -7,9 +7,9 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 <!--Load Styles-->
-<link rel="stylesheet" href="../styles/themes/spacelab/bootstrap.min.css">
-<link rel="stylesheet/less" href="../styles/themes/spacelab/bootswatch.less">
-<link rel="stylesheet/less" href="../styles/themes/spacelab/variables.less">
+<link rel="stylesheet" href="../styles/themes/cerulean/bootstrap.min.css">
+<link rel="stylesheet/less" href="../styles/themes/cerulean/bootswatch.less">
+<link rel="stylesheet/less" href="../styles/themes/cerulean/variables.less">
 <link rel="stylesheet/less" href="../styles/less-1.3.0.min.less">
 <link rel="stylesheet" href="../styles/contentpage.css">
 
@@ -45,7 +45,7 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 		<div class="well sidebar-nav">
             <ul class="nav nav-list">
               <!--<li class="nav-header">Sidebar</li>-->
-              <li><a href="Index.html">ABSTRACT</a></li>
+              <li><a href="../Index.html">ABSTRACT</a></li>
 			  <li><a href="Introduction.html">INTRODUCTION</a></li>
 		      <li><a href="Background.html">BACKGROUND</a></li>
 		      <li><a href="DataSet.html">DATA</a></li>
@@ -67,45 +67,10 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 			
 			<div class="span8">
 			
-				    <h1>STILL NEEDS TO BE WRITTEN</h1>
-				    <p>In this section I outline the various methods I used in order to conduct an analysis of the data, including pre-processing methods, as well as the approaches used during processing. </p>
-				    <h2>PREPROCESSING</h2>
-				    <p>1. Finding Sessions with Viable Data</p>
-				    <p>Due to difficulties with collecting the data, many of the sessions captured in the initial dataset were not viable for our use. During each session, both the child and treatment provider wore sensors on 2 ankles. The following selection criteria were applied after reading in raw EDA data into Matlab to locate viable sessions:</p>
-				    <p>SELECTION CRITERIA:</p>
-				    <ul>
-				      <ul>
-				        <li>Measurements must be above .45 us</li>
-				        <li>Measurements must be continuous for a significant period of time (5 minutes and above)</li>
-				        <li>Measurements for a given subject must be continuous over one sensor, ie, continuous measurement on ankle 1 for the provider and continuous measurement on ankle 2 for the child. If sensor 1 stops having readings for 2 minutes, but sensor 2 has readings for those 2 minutes, the sensor 1 reading for a period containing those 2 minutes is not continuous. </li>
-				        <li>Engagement of subjects must be appropriate (depending on whether pool was engaged or not engaged)</li>
-				        <li>Measurements must reflect realistic fluctuation (ie, no long periods of flatness)</li>
-				      </ul>
-				    </ul>
-				    <p>To this end, I used blah.m(link!) to highlight regions of interest automatically before combing through the rest of the segments to filter for the rest of the selection criteria. </p>
-				    <p>2. Filtering the Signal</p>
-				    <p>I applied a band-pass filter to each sample in order to smooth the signal. To determine the appropriate parameters for the band-pass filter applied, I utilized the interactive signal processing scripts iFilter.m, and iSignal.m, written by T. O'Haver of UMD, located <a href="http://terpconnect.umd.edu/~toh/spectrum/SignalProcessingTools.html">here</a>. For specific parameters chosen for each sample, please see Results.</p>
-				    <p>3. Peak Detection</p>
-				    <p>I applied an automated peak detection algorithm, also written by T. O'Haver, implemented in his script iPeak.m, choosing specific parameters using the script's interactive feature in order to ascertain the best fit. For specific parameters chosen for each sample, please see Results.</p>
-				    <h2>ANALYSES</h2>
-				    <p>1. Examining the Raw Signal</p>
-				    <p>Graphed unfiltered EDA's of provider and child next to one another, as well as stacked on top of one another.</p>
-				    <p>2. Examining the Filtered Signal</p>
-				    <p>Graphed filtered EDA's of provider and child next to one another, as well as stacked on top of one another.</p>
-				    <p>3. Correlations</p>
-				    <p>Used script to vary time window of data, and then ran correlation script in matlab in order to find periods of time in which the filtered signals correlated. Script can be found here.</p>
-				    <p>4. Average Delays between Peaks</p>
-				    <p>Calculated and examined delay between peak in signal A and the nearest subsequent peak in signal B. Calculated and examined average delay over variable time intervals. </p>
-				    <p>5. Average Number of Peaks</p>
-				    <p>Calculated and examined average number of peaks over variable time intervals. </p>
-				    <p>6. Labeled events</p>
-				    <p>Examined video footage to determine what events were actually taking place during EDA measurements.    </p>
-				    <h2>VISUALIZATIONS</h2>
-				    <p>All interactive visualizations were constructed using D3, an experimental data visualization library created by Mike Bostock of the Stanford Visualization Group. D3 can be found here. </p>
-				    <h2>SOFTWARE</h2>
-				    <p>I primarily used Matlab 2010Ra, Python 2.7, Adobe Dreamweaver CS5, and D3, a javascript based data visualization library to conduct this project. </p>
-				<h2>DATA CONVERSION</h2>
-				    <p>I recieved the initial dataset in excel format. I used a python script written by Peter Combs (pcombs@gmail.com) to convert my excel files into .mat files, and another matlab script, found here, to convert my matlab data into the JSON files that are read by D3.    <!-- end .content --></p>
+				    <h1>DISCUSSION</h1>
+				    <p>Based on our current results we found that local trends did not seem to consistently reflect short periods of engagement. We did find, however, that longer periods of engagement yielded increased correlation relatively consistently. One example of this can be found in the subject 10 sample set where, for the second half of the time series the child and the therapist are engaged in playing with some sand while facing each other and conversing with each other for an extended period of time. During this portion of the sample set the cumulative correlation of the filtered data samples rises gradually and consistently the longer the occupational therapist and child are playing. The most helpful and visually striking method of seeing results in regards to engagement was found to be the cumulative correlation measures, as the moving window correlation seemed to fluctuate very frequently over small timespans, but trends could be found for longer time segments in the cumulative correlation time series. Peak frequency occasionally was also evident during periods of time when the therapist was watching or conversing the child, as takes place in the beginning of subject 14's first few minutes of data, or at the beginning of subject 4's data set when there is a cluster of peaks for the therapist and child while the therapist speak to the child about climbing into a hammock and watches them climb into the hammock. </p><p>  Another interesting aspect we observed is that sometimes the child and occupational therapist didn’t necessarily seem to be engaging verbally or even looking at one another, however correlation in EDA seems to rise when the therapist spends an extended period of time observing the child during a session without verbally engaging with anybody else. One example of this can be found in subject 14’s data set, during the beginning third of the sample, when the child did not seem to be engaging in any way with the therapist, but the therapist was concentrating visually on the child. The vast majority of times however, a rise in cumulative correlation is observed when the child is, in fact, speaking to the therapist or listening to the therapist speak to them. Subject 4's data set is also consistent with this, with constant engagement being evident throughout the interaction and providing support to the notion that consistent observation or verbal interaction would both be ways to encourage synchrony in EDA readings. During this data set, the child is occasionally being watched by the therapist, but is not necessarily constantly speaking to the therapist, yet cumulative correlation increases as the session goes on.</p>
+
+				    <p>A notable and particularly interesting sample set is session 1, for subject 13, in which the therapist accidentally exposes the child to a toy that the child is afraid of. During this time period, the therapist makes a joke about the toy but the child is clearly fearful, going so far as to reengage with the therapist in order to request that the therapist not expose the child to the toy again. During this set of events, one would expect almost no synchrony between the therapist and the child since it is clear that the therapist is not emotionally engaging with the child in the sense that the therapist is not empathizing with the child's fear. The results do indeed show a drop in correlation between the two data samples for the child and the therapist during this period of time. </p><p>Overall, a much larger data set would be required in order to fully investigate whether or not synchrony occurs between subjects that are engaged. This preliminary sample set of data seems to only demonstrate synchrony when the child and therapist were observing one another and not interacting with anybody else, or engaged in a common activity for a few minutes at a time with very minimal if any disengagement that might span a few seconds. Nonetheless, these results are both interesting and compelling enough that further investigation may not be unwarranted. </p>
 		
 			</div>
 			
