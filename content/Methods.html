@@ -81,7 +81,7 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 				        <li>Measurements must reflect realistic fluctuation (ie, no long periods of flatness)</li>
 				      </ul>
 				    </ul>
-				    <p>To this end, I used blah.m(link!) to highlight regions of interest automatically before combing through the rest of the segments to filter for the rest of the selection criteria. </p>
+				    <p>To this end, I used Matlab (findRegions.m) to highlight regions of interest automatically before combing through the rest of the segments to filter for the rest of the selection criteria. </p>
 				    <p>To give some idea of what &quot;realistic fluctuation entails,&quot; this figure reflects &quot;regular fluctuation&quot; in both the OT and Child's EDA readings:</p>
 				    <p><img src="images/c10s1TS68Dur22.jpg" width="100%" height="150" alt="c10ses1regfluct" /></p>
 				    <p>Whereas the following two figures show irregular fluctuation in the OT's signal, as it drops off sharply and remains very flat for a long period of time, or the entire session, even when normalized, still shows a very flat line:</p>
@@ -92,7 +92,7 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 				    <p>3. Filtering the Signal</p>
 				    <p>I applied a band-pass filter to each sample in order to smooth the signal. To determine the appropriate parameters for the band-pass filter applied, I utilized the interactive signal processing scripts iFilter.m, and iSignal.m, written by T. O'Haver of UMD, located <a href="http://terpconnect.umd.edu/~toh/spectrum/SignalProcessingTools.html">here</a>. For specific parameters chosen for each sample, please see Results.</p>
 				    <p>4. Peak Detection</p>
-				    <p>I applied an automated peak detection algorithm, also written by T. O'Haver, implemented in his script iPeak.m, choosing specific parameters using the script's interactive feature in order to ascertain the best fit. For specific parameters chosen for each sample, please see Results.</p>
+				    <p>I applied an automated peak detection algorithm, also written by T. O'Haver, implemented in his script iPeak.m, choosing specific parameters using the script's interactive feature in order to ascertain the best fit.</p>
 				    <h2>ANALYSES</h2>
 				    <p>1. Examining the Raw Signal</p>
 				    <p>Graphed unfiltered EDA's of provider and child next to one another, as well as stacked on top of one another.</p>
@@ -107,7 +107,7 @@ ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it ne
 				    <p>6. Labeled events</p>
 				    <p>Examined video footage to determine what events were actually taking place during EDA measurements.    </p>
 				    <h2>VISUALIZATIONS</h2>
-				    <p>All interactive visualizations were constructed using D3, an experimental data visualization library created by Mike Bostock of the Stanford Visualization Group. D3 can be found here. </p>
+				    <p>All interactive visualizations were constructed using D3, an experimental data visualization library created by Mike Bostock of the Stanford Visualization Group. D3 can be found <a href="http://www.d3js.org">here</a>. </p>
 				    <h2>SOFTWARE</h2>
 				    <p>I primarily used Matlab 2010Ra, Python 2.7, Adobe Dreamweaver CS5, and <a href="http://mbostock.github.com/d3/">D3</a>, a javascript based data visualization library to conduct this project. </p>
 				<h2>DATA CONVERSION</h2>
